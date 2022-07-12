@@ -22,7 +22,7 @@ pub fn create_rsa_keys(bits: usize) -> Result<RsaKeys> {
     })
 }
 
-pub fn create_rsa_keys_and_dotenv_file(bits: usize) -> Result<()> {
+pub fn create_rsa_key_files(bits: usize) -> Result<()> {
     let rsa_keys = create_rsa_keys(bits)?;
     let mut private_key_file = File::create(".private_key")?;
     let mut public_key_file = File::create(".public_key")?;

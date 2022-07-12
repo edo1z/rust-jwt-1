@@ -1,5 +1,5 @@
 use jsonwebtoken::{decode, encode, Algorithm, DecodingKey, EncodingKey, Header, Validation};
-use rsa_key::{create_rsa_keys_and_dotenv_file, get_rsa_keys_from_files};
+use rsa_key::{create_rsa_key_files, get_rsa_keys_from_files};
 use serde::{Deserialize, Serialize};
 use std::error;
 
@@ -9,7 +9,7 @@ fn main() {
     let rsa_keys_result = get_rsa_keys_from_files();
     if rsa_keys_result.is_err() {
         println!("creating RSA kyes...");
-        let result = create_rsa_keys_and_dotenv_file(2048);
+        let result = create_rsa_key_files(2048);
         match result {
             Ok(_) => println!("created RSA kyes!"),
             Err(err) => println!("{:?}", err),
